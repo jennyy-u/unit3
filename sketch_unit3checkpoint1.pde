@@ -24,37 +24,33 @@ void setup() { //---------------------------------------------------------------
 
 void draw() { //--------------------------------------------------------------------------------
   background(whitegrey);
-  
+
   //buttons
-  if (dist(200, 500, mouseX, mouseY) < 100) {
-    stroke(white);
-  } else {
-    stroke(bluec);
-  }
+  tactile(200, 500, 50);
   fill(greyblue);
   circle(200, 500, 100);
-  
-   if (dist(400, 500, mouseX, mouseY) < 100) {
-    stroke(white);
-  } else {
-    stroke(bluec);
-  }
+
+  tactile(400, 500, 50);
   fill(seafoam);
   circle(400, 500, 100);
-  
-   if (dist(600, 500, mouseX, mouseY) < 100) {
-    stroke(white);
-  } else {
-    stroke(bluec);
-  }
+
+  tactile(600, 500, 50);
   fill(tblue);
   circle(600, 500, 100);
-  
-  
+
+
   //indicator
   fill(selectedColor);
   square(220, 50, 360);
-  
+} //--------------------------------------------------------------------------------------------
+
+
+void tactile(int x, int y, int r) { //----------------------------------------------------------
+  if (dist(x, y, mouseX, mouseY) < r) {
+    stroke(white);
+  } else {
+    stroke(bluec);
+  }
 } //--------------------------------------------------------------------------------------------
 
 
@@ -62,13 +58,12 @@ void mouseReleased() { //-------------------------------------------------------
   if (dist(200, 500, mouseX, mouseY) < 50) {
     selectedColor = greyblue;
   }
-  
-  if(dist(400, 500, mouseX, mouseY) < 50) {
+
+  if (dist(400, 500, mouseX, mouseY) < 50) {
     selectedColor = seafoam;
   }
-  
-  if(dist(600, 500, mouseX, mouseY) < 50) {
+
+  if (dist(600, 500, mouseX, mouseY) < 50) {
     selectedColor = tblue;
   }
-  
 } //--------------------------------------------------------------------------------------------
