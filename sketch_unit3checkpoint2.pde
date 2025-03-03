@@ -27,7 +27,7 @@ void draw() { //----------------------------------------------------------------
 
   //buttons
 
-  if (dist(90, 30, mouseX, mouseY) < 50) {
+  if (dist(90, 30, mouseX, mouseY) < 140) {
     stroke(white);
   } else {
   stroke(bluec);
@@ -35,7 +35,7 @@ void draw() { //----------------------------------------------------------------
   fill(greyblue);
   square(90, 30, 140);
 
-  if (dist(330, 30, mouseX, mouseY) < 50) {
+  if (dist(330, 30, mouseX, mouseY) < 140) {
     stroke(white);
   } else {
   stroke(bluec);
@@ -43,7 +43,7 @@ void draw() { //----------------------------------------------------------------
   fill(seafoam);
   square(330, 30, 140);
 
- if (dist(570, 30, mouseX, mouseY) < 50) {
+ if (dist(570, 30, mouseX, mouseY) < 140) {
     stroke(white);
   } else {
   stroke(bluec);
@@ -60,15 +60,15 @@ void draw() { //----------------------------------------------------------------
 
 
 void mouseReleased() { //-----------------------------------------------------------------------
-  if (dist(90, 30, mouseX, mouseY) < 50) {
+  if (dist(90, 30, mouseX, mouseY) < 140) {
     selectedColor = greyblue;
   }
 
-  if (dist(330, 30, mouseX, mouseY) < 50) {
+  if (dist(330, 30, mouseX, mouseY) < 140) {
     selectedColor = seafoam;
   }
 
-  if (dist(570, 30, mouseX, mouseY) < 50) {
+  if (dist(570, 30, mouseX, mouseY) < 140) {
     selectedColor = tblue;
   }
 } //--------------------------------------------------------------------------------------------
