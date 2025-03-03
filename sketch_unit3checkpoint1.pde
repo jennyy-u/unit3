@@ -8,6 +8,7 @@ color greyblue = #c6dbef;
 color seafoam = #9ecae1;
 color tblue = #6baed6;
 color bluec = #2171b5;
+color white = #ffffff;
 
 //variables for colour selection
 color selectedColor;
@@ -25,12 +26,27 @@ void draw() { //----------------------------------------------------------------
   background(whitegrey);
   
   //buttons
+  if (dist(200, 500, mouseX, mouseY) < 100) {
+    stroke(white);
+  } else {
+    stroke(bluec);
+  }
   fill(greyblue);
   circle(200, 500, 100);
   
+   if (dist(400, 500, mouseX, mouseY) < 100) {
+    stroke(white);
+  } else {
+    stroke(bluec);
+  }
   fill(seafoam);
   circle(400, 500, 100);
   
+   if (dist(600, 500, mouseX, mouseY) < 100) {
+    stroke(white);
+  } else {
+    stroke(bluec);
+  }
   fill(tblue);
   circle(600, 500, 100);
   
