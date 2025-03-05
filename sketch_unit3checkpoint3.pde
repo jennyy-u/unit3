@@ -11,6 +11,7 @@ color cloud = #78a3c5;
 
 float sliderY;
 
+float shade;
 
 void setup() {
   size (800, 600);
@@ -18,26 +19,29 @@ void setup() {
   stroke(sand);
   fill(sand);
   sliderY = 400;
+  shade = 0;
 }
 
 void draw() {
-  background(0);
+  background(shade);
+
+  shade = map(sliderY, 100, 500, 0, 255);
   
   line(400, 100, 400, 500);
   circle(400, sliderY, 50);
-
 }
 
 void mouseDragged() {
-  if (mouseY > 100 && mouseY < 500 && mouseX > 375 && mouseX < 425) {
-   sliderY = mouseY ;
-  }
-  
+  controlSlider();
 }
 
 void mouseReleased() {
+  controlSlider();
+}
+
+
+void controlSlider() {
   if (mouseY > 100 && mouseY < 500 && mouseX > 375 && mouseX < 425) {
-   sliderY = mouseY ;
+    sliderY = mouseY ;
   }
-  
 }
