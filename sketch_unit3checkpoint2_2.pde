@@ -11,6 +11,7 @@ color pool = #7097a8;
 color wash = #a6c1e2;
 color white = #ffffff;
 
+color selectedColor;
 
 int toggle;
 
@@ -47,12 +48,15 @@ void draw() {
 void mouseReleased() {
   if (mouseX > 50 && mouseX <250 && mouseY > 450 && mouseY < 650) {
     toggle = toggle * -1;
+    selectedColor = pool;
   }
   if (mouseX > 300 && mouseX <500 && mouseY > 450 && mouseY < 650) {
     toggle = toggle * -1;
+    selectedColor = sky;
   }
   if (mouseX > 550 && mouseX <750 && mouseY > 450 && mouseY < 650) {
     toggle = toggle * -1;
+    selectedColor = light;
   }
 }
 
