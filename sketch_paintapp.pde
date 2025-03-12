@@ -13,16 +13,20 @@ color pink = #efc3c2;
 color lilac = #d3c3fc;
 color chocolate = #a68076;
 color almond = #f7e6d6;
+color background = #f0f4f9;
 
 float sliderY;
+float thickness;
 color selectedColor;
 int linecolor;
+
 
 void setup() {
   size(800, 600);
   sliderY = 277;
+  thickness = 1;
   //selectedColor = #ffffff;
-  background(#f0f4f9);
+  background(background);
   //frame
   strokeWeight(3);
   rect(190, 70, 580, 500, 10);
@@ -33,6 +37,10 @@ void setup() {
 
 void draw() {
 
+  stroke(background);
+  fill(background);
+  rect(0, 0, 180, 600);
+  
   //palette buttons
   strokeWeight(2);
 
@@ -76,22 +84,31 @@ void draw() {
   fill(almond);
   circle(705, 40, 30);
 
-  fill(#ffffff);
-  //new, save, clear
+  stroke(0);  
+  fill(255);
+  
+  //new
+  stroke(0);
   rect(30, 25, 140, 30);
+  
+  //save
   rect(30, 60, 140, 30);
+  
+  
+  //clear
   rect(30, 95, 140, 30);
 
+  //stamp
+  rect(30, 430, 140, 140, 10);
 
   //thickess slider
   line(65, 150, 65, 405);
   circle(65, sliderY, 30);
+  thickness = map(sliderY, 150, 405, 1, 15);
 
   //thickness indicator
+  strokeWeight(thickness);
   line(135, 150, 135, 405);
-
-  //stamp
-  rect(30, 430, 140, 140, 10);
 }
 
 
@@ -151,6 +168,7 @@ void controlSlider() {
   if (mouseY > 150 && mouseY < 405 && mouseX > 50 && mouseX < 80) {
     sliderY = mouseY;
   }
+  thickness = map(sliderY, 150, 405, 1, 20);
 }
 
 void tactile(int x, int y, int r) {
