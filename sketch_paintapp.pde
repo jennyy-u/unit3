@@ -172,13 +172,41 @@ void mouseReleased() {
   }
 
   //new button
-  if (mouseX > 30 && mouseY < 170 && mouseY > 25 && mouseY < 55 ) {
+  if (mouseX > 30 && mouseX < 170 && mouseY > 25 && mouseY < 55 ) {
     strokeWeight(3);
     stroke(0);
     fill(255);
     rect(190, 70, 580, 500, 10);
   }
+
+  //load button
+  if (mouseX > 30 && mouseX < 170 && mouseY > 60 && mouseY < 90) {
+    selectInput("Pick an image to load", "openImage");
+  }
+
+  //save button
+  if (mouseX > 30 && mouseX < 170 &&  mouseY > 95 && mouseY < 125) {
+    selectOutput("Choose a name for your new image file", "saveImage");
+  }
 }
+  void saveImage(File f) {
+    if (f != null) {
+      PImage canvas = get(71, 1, width-71, width-1);
+      canvas.save(f.getAbsolutePath());
+    }
+  }
+  
+  void openImage(File f) {
+    if (f != null) {
+      //KLUDGE
+      int n = 0;
+      while (n<10) {
+        PImage pic = loadImage(f.getPath());
+        image(pic, 0, 0);
+        n = n + 1;
+      }
+    }
+  }
 
 void controlSlider() {
   if (mouseY > 150 && mouseY < 405 && mouseX > 50 && mouseX < 80) {
