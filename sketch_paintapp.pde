@@ -20,6 +20,8 @@ float thickness;
 color selectedColor;
 int linecolor;
 
+PImage star;
+
 
 void setup() {
   size(800, 600);
@@ -31,6 +33,7 @@ void setup() {
   strokeWeight(3);
   rect(190, 70, 580, 500, 10);
   linecolor = 0;
+  star = loadImage("star.png");
 }
 
 
@@ -119,6 +122,8 @@ void draw() {
   //thickness indicator
   strokeWeight(thickness);
   line(135, 150, 135, 405);
+
+  //image(star, mouseX, mouseY, 70, 70);
 }
 
 
@@ -188,25 +193,28 @@ void mouseReleased() {
   if (mouseX > 30 && mouseX < 170 &&  mouseY > 95 && mouseY < 125) {
     selectOutput("Choose a name for your new image file", "saveImage");
   }
+
+  //drawing in frame
 }
-  void saveImage(File f) {
-    if (f != null) {
-      PImage canvas = get(71, 1, width-71, width-1);
-      canvas.save(f.getAbsolutePath());
+
+void saveImage(File f) {
+  if (f != null) {
+    PImage canvas = get(71, 1, width-71, width-1);
+    canvas.save(f.getAbsolutePath());
+  }
+}
+
+void openImage(File f) {
+  if (f != null) {
+    //KLUDGE
+    int n = 0;
+    while (n<10) {
+      PImage pic = loadImage(f.getPath());
+      image(pic, 0, 0);
+      n = n + 1;
     }
   }
-  
-  void openImage(File f) {
-    if (f != null) {
-      //KLUDGE
-      int n = 0;
-      while (n<10) {
-        PImage pic = loadImage(f.getPath());
-        image(pic, 0, 0);
-        n = n + 1;
-      }
-    }
-  }
+}
 
 void controlSlider() {
   if (mouseY > 150 && mouseY < 405 && mouseX > 50 && mouseX < 80) {
