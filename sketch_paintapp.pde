@@ -20,7 +20,7 @@ float thickness;
 color selectedColor;
 int linecolor;
 
-PImage star;
+PImage star1;
 
 
 void setup() {
@@ -33,7 +33,7 @@ void setup() {
   strokeWeight(3);
   rect(190, 70, 580, 500, 10);
   linecolor = 0;
-  star = loadImage("star.png");
+  star1 = loadImage("sstar.png");
 }
 
 
@@ -111,8 +111,10 @@ void draw() {
   text("save", 75, 117);
 
   //stamp
+  //tactile(0, 0, 100, 100);
   fill(255);
   rect(30, 430, 140, 140, 10);
+  //image(star1, 30, 430, 140, 140);
 
   //thickess slider
   line(65, 150, 65, 405);
@@ -123,7 +125,6 @@ void draw() {
   strokeWeight(thickness);
   line(135, 150, 135, 405);
 
-  //image(star, mouseX, mouseY, 70, 70);
 }
 
 
@@ -228,5 +229,13 @@ void tactile(int x, int y, int r) {
     stroke(#ffffff);
   } else {
     stroke(0);
+  }
+}
+
+void tactile(int x, int y, int w, int h) {
+  if (mouseX > x && mouseX < x+w && mouseY > y && mouseY< y+h) {
+    fill(255, 255, 0);
+  } else {
+    fill(255);
   }
 }
