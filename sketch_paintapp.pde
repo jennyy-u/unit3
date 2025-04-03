@@ -20,8 +20,8 @@ float thickness;
 color selectedColor;
 int linecolor;
 
-PImage star1;
-
+PImage star;
+boolean starOn;
 
 void setup() {
   size(800, 600);
@@ -33,7 +33,8 @@ void setup() {
   strokeWeight(3);
   rect(190, 70, 580, 500, 10);
   linecolor = 0;
-  star1 = loadImage("sstar.png");
+  star = loadImage("sstar.png");
+  starOn = false;
 }
 
 
@@ -110,12 +111,6 @@ void draw() {
   fill(0);
   text("save", 75, 117);
 
-  //stamp
-  //tactile(0, 0, 100, 100);
-  fill(255);
-  rect(30, 430, 140, 140, 10);
-  //image(star1, 30, 430, 140, 140);
-
   //thickess slider
   line(65, 150, 65, 405);
   circle(65, sliderY, 30);
@@ -125,14 +120,25 @@ void draw() {
   strokeWeight(thickness);
   line(135, 150, 135, 405);
 
+  //stamp
+  tactile(0, 0, 140, 140);
+  starOnOff();
+  fill(255);
+  rect(30, 430, 140, 140, 10);
+  image(star, 30, 430, 140, 140);
 }
 
 
 void mouseDragged() {
   controlSlider();
-  //squiggly line
-  stroke(linecolor);
-  line(pmouseX, pmouseY, mouseX, mouseY);
+  if (starOn == false) {
+    //squiggly line
+    stroke(linecolor);
+    line(pmouseX, pmouseY, mouseX, mouseY);
+  } else {
+    //star drawing
+    image(star, mouseX, mouseY, 140, 140);
+  }
 }
 
 void mouseReleased() {
@@ -195,6 +201,11 @@ void mouseReleased() {
     selectOutput("Choose a name for your new image file", "saveImage");
   }
 
+  //stamp
+  if (mouseX > 30 && mouseX < 170 && mouseY > 430 && mouseY <570) {
+    starOn = !starOn;
+  }
+
   //drawing in frame
 }
 
@@ -237,5 +248,15 @@ void tactile(int x, int y, int w, int h) {
     fill(255, 255, 0);
   } else {
     fill(255);
+  }
+}
+
+void starOnOff() {
+  if (starOn == true) {
+    stroke(254, 199, 11);
+    strokeWeight(4);
+  } else {
+    stroke(0);
+    strokeWeight(2);
   }
 }
