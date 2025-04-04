@@ -131,13 +131,17 @@ void draw() {
 
 void mouseDragged() {
   controlSlider();
+  if (mouseX > 770 && mouseX < 190 && mouseY > 570 && mouseY < 70) {
+    //starOn == false;
+    noStroke();}
   if (starOn == false) {
     //squiggly line
     stroke(linecolor);
+    strokeWeight(thickness);
     line(pmouseX, pmouseY, mouseX, mouseY);
   } else {
     //star drawing
-    image(star, mouseX, mouseY, 140, 140);
+    image(star, mouseX, mouseY, thickness*10, thickness*10);
   }
 }
 
@@ -229,7 +233,7 @@ void openImage(File f) {
 }
 
 void controlSlider() {
-  if (mouseY > 150 && mouseY < 405 && mouseX > 50 && mouseX < 80) {
+  if (mouseY > 150 && mouseY < 405 && mouseX > 45 && mouseX < 85) {
     sliderY = mouseY;
   }
   thickness = map(sliderY, 150, 405, 1, 20);
@@ -254,7 +258,7 @@ void tactile(int x, int y, int w, int h) {
 void starOnOff() {
   if (starOn == true) {
     stroke(254, 199, 11);
-    strokeWeight(4);
+    strokeWeight(5);
   } else {
     stroke(0);
     strokeWeight(2);
