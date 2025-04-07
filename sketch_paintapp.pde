@@ -131,17 +131,19 @@ void draw() {
 
 void mouseDragged() {
   controlSlider();
-  if (mouseX > 770 && mouseX < 190 && mouseY > 570 && mouseY < 70) {
-    //starOn == false;
-    noStroke();}
-  if (starOn == false) {
-    //squiggly line
-    stroke(linecolor);
-    strokeWeight(thickness);
-    line(pmouseX, pmouseY, mouseX, mouseY);
-  } else {
-    //star drawing
-    image(star, mouseX, mouseY, thickness*10, thickness*10);
+  if (mouseX < 767 && mouseX > 187 && mouseY < 567 && mouseY > 67) {
+
+    if (starOn == false) {
+      //squiggly line
+      stroke(linecolor);
+      strokeWeight(thickness);
+      line(pmouseX, pmouseY, mouseX, mouseY);
+    } else {
+      //star drawing
+      imageMode(CENTER);
+      image(star, mouseX, mouseY, thickness*10, thickness*10);
+      imageMode(CORNER);
+    }
   }
 }
 
